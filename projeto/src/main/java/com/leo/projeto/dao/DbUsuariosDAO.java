@@ -45,11 +45,11 @@ public class DbUsuariosDAO {
 		
 		DbUsuarios usuario = new DbUsuarios();
 		
-		List<DbUsuarios> lstUsuarios = new ArrayList();
+		List<DbUsuarios> lstUsuarios = new ArrayList<DbUsuarios>();
 		
 		GenericDao<DbUsuarios> genericDao = new GenericDao<DbUsuarios>(usuario);
 		
-		lstUsuarios = genericDao.findAll(usuario.getClass().getName());
+		lstUsuarios = genericDao.findAll(usuario.getClass().getSimpleName());
 		
 		return lstUsuarios;
 		

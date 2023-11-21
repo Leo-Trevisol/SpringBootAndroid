@@ -3,6 +3,8 @@ package com.leo.projeto.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +12,6 @@ import com.leo.projeto.dao.DbUsuariosDAO;
 import com.leo.projeto.dao.interfaces.DbUsuariosInterface;
 import com.leo.projeto.entities.DbUsuarios;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 
 @Component
@@ -40,7 +40,7 @@ public class DbUsuariosBean {
 	
 	public void removeUsuario(DbUsuarios usuario) {
 		
-		dao.removeUsuario(usuario);
+		dbUsuariosInterface.delete(usuario);
 		
 	}
 	
@@ -59,7 +59,7 @@ public class DbUsuariosBean {
 		
 		DbUsuarios usuario = new DbUsuarios();
 		
-		List<DbUsuarios> lstUsuarios = new ArrayList();
+		List<DbUsuarios> lstUsuarios = new ArrayList<DbUsuarios>();
 		
 		lstUsuarios = dao.findAllUsuarios();
 		

@@ -2,10 +2,10 @@ package com.leo.projeto.dao.interfaces;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import javax.enterprise.context.ApplicationScoped;
+
 import org.springframework.stereotype.Service;
 
-import jakarta.enterprise.context.ApplicationScoped;
 
 @Service
 @ApplicationScoped
