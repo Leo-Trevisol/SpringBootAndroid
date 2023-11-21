@@ -90,8 +90,6 @@ public class UsuarioController {
     	
     }
     
-    
-    
     @GetMapping("/lstUsuarios")
     List<DbUsuarios> allList() {
       return bean.findAllUsuarios();

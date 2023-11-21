@@ -57,11 +57,9 @@ public class DbUsuariosBean {
 	
 	public List<DbUsuarios> findAllUsuarios(){
 		
-		DbUsuarios usuario = new DbUsuarios();
-		
 		List<DbUsuarios> lstUsuarios = new ArrayList<DbUsuarios>();
 		
-		lstUsuarios = dao.findAllUsuarios();
+		lstUsuarios = dbUsuariosInterface.findAll();
 		
 		return lstUsuarios;
 		

@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.projeto.projetoandroidspring.classesfonte.LoginRequest;
-import com.projeto.projetoandroidspring.classesfonte.LoginResponse;
+import com.projeto.projetoandroidspring.classesfonte.request.LoginUsuarioRequest;
+import com.projeto.projetoandroidspring.classesfonte.response.LoginUsuarioResponse;
 import com.projeto.projetoandroidspring.utils.CustomAsyncTask;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validarUsuarioSenha(String txtUsuario, String textsenha) {
 
-        LoginRequest req = new LoginRequest(txtUsuario, textsenha);
+        LoginUsuarioRequest req = new LoginUsuarioRequest(txtUsuario, textsenha);
 
         Gson gson = new Gson();
 
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             public void customOnPostExecute() {
 
                 if (this.getConteudoRetorno() != null) {
-                    LoginResponse response = gson.fromJson(this.getConteudoRetorno(), LoginResponse.class);
+                    LoginUsuarioResponse response = gson.fromJson(this.getConteudoRetorno(), LoginUsuarioResponse.class);
 
                     if(response.getErro() != null){
                         Toast.makeText(LoginActivity.this, response.getErro(), Toast.LENGTH_SHORT).show();
