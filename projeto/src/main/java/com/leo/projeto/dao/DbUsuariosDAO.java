@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.leo.projeto.entities.DbUsuarios;
 
+import jakarta.persistence.EntityManager;
+
 public class DbUsuariosDAO {
 	
 	public DbUsuarios insereUsuario(DbUsuarios usuario) {
@@ -50,6 +52,17 @@ public class DbUsuariosDAO {
 		lstUsuarios = genericDao.findAll(usuario.getClass().getName());
 		
 		return lstUsuarios;
+		
+	}
+	
+	public Integer max(DbUsuarios usuario) throws Exception {
+		
+		GenericDao<DbUsuarios> genericDao = new GenericDao<DbUsuarios>(usuario);
+		
+		Integer max = genericDao.max(usuario.getClass());
+		
+		return max;
+
 		
 	}
 

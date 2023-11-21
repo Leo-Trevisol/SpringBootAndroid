@@ -3,6 +3,7 @@ package com.leo.projeto.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +19,12 @@ import com.leo.projeto.response.UsuarioResponse;
 @RestController
 public class UsuarioController {
 	
-	DbUsuariosBean bean = getInstance();
+	@Autowired
+	DbUsuariosBean bean;
 	
     @PostMapping(value = "inserirUsuario", produces = "application/json", consumes = "application/json")
 	public UsuarioResponse inserirUsuario(
-			@RequestBody UsuarioRequest req) {
+			@RequestBody UsuarioRequest req) throws Exception {
     	
     	UsuarioResponse response = new UsuarioResponse();
     	

@@ -3,17 +3,37 @@ package com.leo.projeto.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.leo.projeto.dao.DbUsuariosDAO;
-import com.leo.projeto.dao.GenericDao;
+import com.leo.projeto.dao.interfaces.DbUsuariosInterface;
 import com.leo.projeto.entities.DbUsuarios;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+
+@Component
+@ApplicationScoped
 public class DbUsuariosBean {
 	
 	DbUsuariosDAO dao = getInstance();
 	
-	public DbUsuarios insereUsuario(DbUsuarios usuario) {
+	@Autowired
+	private DbUsuariosInterface dbUsuariosInterface;
+	
+	public DbUsuarios insereUsuario(DbUsuarios usuario) throws Exception {
 		
-		dao.insereUsuario(usuario);
+		Integer max = dao.max(usuario);
+		if (max == null)
+			max = 1;
+		else
+			max++;
+		
+		usuario.setId(max);
+		
+		dbUsuariosInterface.save(usuario);
 		
 		return usuario;
 	}

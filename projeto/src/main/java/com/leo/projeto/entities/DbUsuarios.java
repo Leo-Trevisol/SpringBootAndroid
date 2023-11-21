@@ -28,7 +28,7 @@ public class DbUsuarios implements Serializable, com.leo.projeto.entities.interf
 	
 	@Id
 	 @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario_id", allocationSize = 1)
-    @GeneratedValue(generator = "seq_usuario", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "seq_usuario", strategy = GenerationType.IDENTITY)
 	private Integer id;
 	 @Column(name = "nome", length = 50, nullable = false)
 	private String nome;
@@ -42,7 +42,7 @@ public class DbUsuarios implements Serializable, com.leo.projeto.entities.interf
 		private Date nascimento;
 	 
 	 
-	public Integer getIdUsu() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -78,7 +78,7 @@ public class DbUsuarios implements Serializable, com.leo.projeto.entities.interf
 	}
 	
 	@Override
-	public Object getId() {
+	public Object getIdClass() {
 		return new DbUsuariosPK();
 	}
 }

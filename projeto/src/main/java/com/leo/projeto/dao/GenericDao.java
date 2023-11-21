@@ -78,10 +78,11 @@ public class GenericDao<Object> implements InterfaceGenericDao {
 		return lista;
 	}
 
+
 	@Override
-	public void removeById(Integer id) {
-		// TODO Auto-generated method stub
-		
+	public Integer max(Class clazz) {
+		Integer max = (Integer) session.createQuery("select max(id) from " + clazz.getName()).uniqueResult();
+		return max;
 	}
 
 	
