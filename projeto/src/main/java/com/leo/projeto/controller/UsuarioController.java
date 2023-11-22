@@ -29,18 +29,14 @@ public class UsuarioController {
     	
     	UsuarioResponse response = new UsuarioResponse();
     	
-    	if(req.getUsuario().getNome() == null || req.getUsuario().getSenha() == null
-    			|| req.getUsuario().getEmail() == null || req.getUsuario().getNascimento() == null ) {
-    		response.setErro("Todos os campos devem ser preenchidos");
-    		return response;
-    	}
+    	DbUsuarios usuario = bean.loginVoToDbUsuarios(req.getUsuario());
     	
-    	DbUsuarios usuario = bean.insereUsuario(req.getUsuario());
+    	String msgErro = bean.insereUsuario(usuario);
     	
-    	if(usuario != null) {
+    	if(msgErro == null) {
     		response.setToken("Usuario inserido com sucesso!");
     	}else {
-    		response.setErro("Usuario/Senha incorreta!");
+    		response.setErro(msgErro);
     	}
     	
     	return response;
@@ -100,13 +96,4 @@ public class UsuarioController {
       return bean.findAllUsuarios().size();
     }
     
-    
-	public DbUsuariosBean getInstance() {
-		if(bean == null) {
-			return new DbUsuariosBean();
-		}else {
-			return bean;
-		}
-	}
-
 }

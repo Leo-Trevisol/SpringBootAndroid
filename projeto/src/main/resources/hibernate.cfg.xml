@@ -19,7 +19,7 @@
         <!-- Specifying Session Context -->
         <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
         
-        <property name="jakarta.persistence.schema-generation.database.action">none</property>
+        <property name="jakarta.persistence.schema-generation.database.action">drop-and-create</property>
          <mapping class="com.leo.projeto.entities.DbUsuarios"/>
         <!-- Mapping With Model Class Containing Annotations -->
     </session-factory>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AdicionarNovoUsuarioFragment">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.projeto.projetoandroidspring.view.CustomEditText
+                android:id="@+id/txtInfoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                android:textColor="@android:color/black"
+
+                app:hint="Informe o Usuario" />
+
+            <com.projeto.projetoandroidspring.view.CustomEditText
+                android:id="@+id/txtInfoSenha"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                app:hint="Informe a senha"
+                android:textColor="@android:color/black"
+                />
+
+            <com.projeto.projetoandroidspring.view.CustomEditText
+                android:id="@+id/txtInfoSenhaConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                app:hint="Confirme a senha"
+                android:textColor="@android:color/black"
+                />
+
+            <com.projeto.projetoandroidspring.view.CustomEditText
+                android:id="@+id/txtInfoEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                app:hint="Informe o Email"
+                android:textColor="@android:color/black"
+                />
+
+            <com.projeto.projetoandroidspring.view.CustomEditTextCalendar
+                android:id="@+id/txtInfoNascimento"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:imeOptions="actionDone"
+                app:hint="Informe a data de nascimento"
+                android:textColor="@android:color/black"
+                />
+
+
+          <Button
+              android:id="@+id/btCadastra"
+              android:layout_width="wrap_content"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:text="Cadastrar"
+              android:backgroundTint="@color/red"
+              android:layout_gravity="center">
+
+          </Button>
+
+    </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

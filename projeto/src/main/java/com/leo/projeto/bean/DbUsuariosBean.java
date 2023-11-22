@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.leo.projeto.dao.DbUsuariosDAO;
 import com.leo.projeto.dao.interfaces.DbUsuariosInterface;
 import com.leo.projeto.entities.DbUsuarios;
+import com.leo.projeto.vo.LoginVO;
 
 
 
@@ -23,7 +24,12 @@ public class DbUsuariosBean {
 	@Autowired
 	private DbUsuariosInterface dbUsuariosInterface;
 	
-	public DbUsuarios insereUsuario(DbUsuarios usuario) throws Exception {
+	public String insereUsuario(DbUsuarios usuario) throws Exception {
+		
+		if(usuario.getNome() == null || usuario.getSenha() == null
+    			|| usuario.getEmail() == null || usuario.getNascimento() == null ) {
+    		return "Todos os campos devem ser preenchidos";
+    	}
 		
 		Integer max = dao.max(usuario);
 		if (max == null)
@@ -33,9 +39,17 @@ public class DbUsuariosBean {
 		
 		usuario.setId(max);
 		
-		dbUsuariosInterface.save(usuario);
+		try {
+			dbUsuariosInterface.save(usuario);
+			return null;
+		} catch (Exception e) {
+			if(e.getMessage().contains("UK_")) {
+				return "Email informado já está em uso";
+			}else {
+				return e.getMessage();
+			}
+		}
 		
-		return usuario;
 	}
 	
 	public void removeUsuario(DbUsuarios usuario) {
@@ -82,6 +96,19 @@ public class DbUsuariosBean {
 		}else {
 			return dao;
 		}
+	}
+	
+	public DbUsuarios loginVoToDbUsuarios(LoginVO login) {
+		
+		DbUsuarios usuario = new DbUsuarios();
+		
+		usuario.setNome(login.getNome() != null ? login.getNome() : "");
+		usuario.setSenha(login.getSenha() != null ? login.getSenha() : "");
+		usuario.setEmail(login.getEmail() != null ? login.getEmail() : "");
+		usuario.setNascimento(login.getNascimento() != null ? login.getNascimento() : null);
+		
+		return usuario;
+
 	}
 
 }

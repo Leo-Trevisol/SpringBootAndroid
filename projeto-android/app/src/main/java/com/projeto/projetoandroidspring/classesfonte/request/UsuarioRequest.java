@@ -1,10 +1,9 @@
-package com.leo.projeto.request;
+package com.projeto.projetoandroidspring.classesfonte.request;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.leo.projeto.entities.DbUsuarios;
-import com.leo.projeto.vo.LoginVO;
+import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
 
 public class UsuarioRequest implements Serializable{
 	

@@ -33,7 +33,7 @@ public class DbUsuarios implements Serializable, com.leo.projeto.entities.interf
 	private Integer id;
 	 @Column(name = "nome", length = 50, nullable = false)
 	private String nome;
-	 @Column(name = "email", length = 50, nullable = false)    
+	 @Column(name = "email", length = 50, nullable = false, unique = true)    
 	private String email;
 	 @Column(name = "senha", length = 20, nullable = false)  
 	private String senha;
