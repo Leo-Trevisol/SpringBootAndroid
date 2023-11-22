@@ -1,9 +1,9 @@
 package com.projeto.projetoandroidspring.classesfonte.request;
 
+import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
+
 import java.io.Serializable;
 import java.util.Objects;
-
-import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
 
 public class UsuarioRequest implements Serializable{
 	

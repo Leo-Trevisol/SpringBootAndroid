@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.projeto.projetoandroidspring.classesfonte.request.LoginUsuarioRequest;
@@ -20,13 +19,10 @@ import com.projeto.projetoandroidspring.classesfonte.request.UsuarioRequest;
 import com.projeto.projetoandroidspring.classesfonte.response.LoginUsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.response.UsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
-import com.projeto.projetoandroidspring.fragments.AdicionarNovoUsuarioFragment;
 import com.projeto.projetoandroidspring.utils.CustomAsyncTask;
+import com.projeto.projetoandroidspring.utils.DateUtils;
 import com.projeto.projetoandroidspring.utils.Utils;
 import com.projeto.projetoandroidspring.view.CustomEditText;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -74,33 +70,28 @@ public class LoginActivity extends AppCompatActivity {
             Button btCadastrar = viewInflated.findViewById(R.id.btCadastra);
 
             btCadastrar.setOnClickListener(v1 -> {
-                if(Utils.isEmpty(usuario.getText().trim()) || Utils.isEmpty(senha.getText().trim())
-                || Utils.isEmpty(senhaConfirm.getText().trim()) || Utils.isEmpty(email.getText().trim())
-                || Utils.isEmpty(nascimento.getText().trim())){
+                if (Utils.isEmpty(usuario.getText().trim()) || Utils.isEmpty(senha.getText().trim())
+                        || Utils.isEmpty(senhaConfirm.getText().trim()) || Utils.isEmpty(email.getText().trim())
+                        || Utils.isEmpty(nascimento.getText().trim())) {
                     Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
-                }else if(!senha.getText().trim().equals(senhaConfirm.getText().trim())){
+                } else if (!senha.getText().trim().equals(senhaConfirm.getText().trim())) {
                     Toast.makeText(this, "As senhas devem ser iguais", Toast.LENGTH_SHORT).show();
-                }else {
-                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
-                    try {
-                        LoginVO loginVO = new LoginVO(usuario.getText().trim(),senha.getText().trim(),
-                                email.getText().trim(), formato.parse(nascimento.getText().trim()));
-
-                        cadastrarUsuario(loginVO, dialog);
-
-
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
+                } else {
+                    if (nascimento.getText().length() > 0 || nascimento.getText().length() > 0) {
+                        nascimento.setText(nascimento.getText() + " 00:00:00");
                     }
+
+                    LoginVO loginVO = new LoginVO(usuario.getText().trim(), senha.getText().trim(),
+                            email.getText().trim(), nascimento.getText().trim());
+
+                    cadastrarUsuario(loginVO, dialog);
+
 
                 }
             });
 
 
-
         });
-
 
     }
 

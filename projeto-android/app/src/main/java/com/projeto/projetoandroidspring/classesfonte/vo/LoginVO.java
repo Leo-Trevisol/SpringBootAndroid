@@ -13,9 +13,9 @@ public class LoginVO implements Serializable {
 	
 	private String email;
 	
-	private Date nascimento;
+	private String nascimento;
 
-	public LoginVO(String nome, String senha, String email, Date nascimento) {
+	public LoginVO(String nome, String senha, String email, String nascimento) {
 		super();
 		this.nome = nome;
 		this.senha = senha;
@@ -51,11 +51,11 @@ public class LoginVO implements Serializable {
 		this.email = email;
 	}
 
-	public Date getNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
 	}
 	

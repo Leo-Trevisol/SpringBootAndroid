@@ -1,5 +1,8 @@
 package com.leo.projeto.bean;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,7 +108,14 @@ public class DbUsuariosBean {
 		usuario.setNome(login.getNome() != null ? login.getNome() : "");
 		usuario.setSenha(login.getSenha() != null ? login.getSenha() : "");
 		usuario.setEmail(login.getEmail() != null ? login.getEmail() : "");
-		usuario.setNascimento(login.getNascimento() != null ? login.getNascimento() : null);
+        String padrao = "dd/MM/yyyy";
+
+        DateFormat formatoData = new SimpleDateFormat(padrao);
+		try {
+			usuario.setNascimento(formatoData.parse(login.getNascimento()) != null ? formatoData.parse(login.getNascimento()) : null);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		return usuario;
 
