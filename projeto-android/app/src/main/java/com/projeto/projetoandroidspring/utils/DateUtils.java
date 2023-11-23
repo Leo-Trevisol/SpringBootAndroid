@@ -2,9 +2,15 @@ package com.projeto.projetoandroidspring.utils;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.widget.DatePicker;
+import android.widget.EditText;
+
+import com.projeto.projetoandroidspring.R;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,6 +55,7 @@ public class DateUtils {
 
     public static String PATTERN_UTF = "yyyy-MM-dd'T'HH:mm:ss";
     private static DatePickerDialog picker;
+
 
     /**
      * Método que verifica se a data Informada é valida
@@ -994,6 +1001,62 @@ public class DateUtils {
         }
         return diff;
     }
+
+    public static Action0 actionCalendar(EditText editText, Context context) {
+
+        return new Action0() {
+            @Override
+            public void call() {
+                int day, month, year;
+                if(DateUtils.isValid(editText.getText().toString(), DateUtils.DEFAULT_PATTERN_DATE) && editText.getText().length() == 10){
+                    Date date = DateUtils.getParseDate(editText.getText().toString());
+                    day = DateUtils.getDayOfDate(date);
+                    month = DateUtils.getMonthOfYear(date);
+                    year = DateUtils.getYear(date);
+                } else {
+                    final Calendar cldr = Calendar.getInstance();
+                    day = cldr.get(Calendar.DAY_OF_MONTH);;
+                    month = cldr.get(Calendar.MONTH);
+                    year = cldr.get(Calendar.YEAR);
+                }
+
+                picker = new DatePickerDialog(context, R.style.DatePickerDialogTheme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Date dateSelected = DateUtils.getDate(year, month, dayOfMonth);
+                        editText.setText(DateUtils.getFormatDate(dateSelected));
+                    }
+
+                }, year, month, day);
+                if(!Utils.isEmpty(editText)){
+                    picker.setButton(DatePickerDialog.BUTTON_NEUTRAL, "LIMPAR", new DatePickerDialog.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            editText.setText("");
+                        }
+                    });
+                }
+                picker.show();
+
+                picker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                picker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                if(picker.getButton(DatePickerDialog.BUTTON_NEUTRAL) != null) {
+                    picker.getButton(DatePickerDialog.BUTTON_NEUTRAL).setTextColor(Color.BLACK);
+                }}
+        };
+    }
+
+    public static boolean isValidDate(String dateStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            sdf.setLenient(false);
+            Date date = sdf.parse(dateStr);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
 
 }
 

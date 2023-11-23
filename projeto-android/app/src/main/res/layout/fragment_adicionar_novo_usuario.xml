@@ -3,89 +3,260 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AdicionarNovoUsuarioFragment">
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         >
 
+
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.projeto.projetoandroidspring.view.CustomEditText
-                android:id="@+id/txtInfoUsuario"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuário:">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txtInfoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Informe o usuário"
+                    >
+
+                </EditText>
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:src="@drawable/user"
+                        >
+                    </ImageView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Senha">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/txtInfoSenha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Informe a senha"
+                    android:inputType="textPassword"
+                    >
+                </EditText>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:src="@drawable/password"
+                        >
+                    </ImageView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmação da senha">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txtInfoSenhaConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirme a senha"
+                    android:layout_weight="1"
+                    android:inputType="textPassword"
+                    >
+                </EditText>
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:src="@drawable/passwordconf"
+                        >
+                    </ImageView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txtInfoEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Informe o E-mail"
+                    >
+                </EditText>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:src="@drawable/email"
+                        >
+                    </ImageView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data de nascimento">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/txtInfoNascimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Informe a data de nasc"
+                    android:layout_weight="1"
+                    android:drawableTint="@color/colorPrimary"
+                    >
+                </EditText>
+
+                    <ImageView
+                        android:id="@+id/calendario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:src="@drawable/calendar"
+                        >
+                    </ImageView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:imeOptions="actionDone"
-                android:textColor="@android:color/black"
+                android:orientation="vertical">
 
-                app:hint="Informe o Usuario" />
+                <Button
+                    android:id="@+id/btCadastra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Cadastrar"
+                    android:backgroundTint="@color/red"
+                    android:drawableEnd="@drawable/add"
+                    android:layout_gravity="center">
 
-            <com.projeto.projetoandroidspring.view.CustomEditText
-                android:id="@+id/txtInfoSenha"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:imeOptions="actionDone"
-                app:hint="Informe a senha"
-                android:textColor="@android:color/black"
-                />
-
-            <com.projeto.projetoandroidspring.view.CustomEditText
-                android:id="@+id/txtInfoSenhaConfirm"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:imeOptions="actionDone"
-                app:hint="Confirme a senha"
-                android:textColor="@android:color/black"
-                />
-
-            <com.projeto.projetoandroidspring.view.CustomEditText
-                android:id="@+id/txtInfoEmail"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:imeOptions="actionDone"
-                app:hint="Informe o Email"
-                android:textColor="@android:color/black"
-                />
-
-            <com.projeto.projetoandroidspring.view.CustomEditTextCalendar
-                android:id="@+id/txtInfoNascimento"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:imeOptions="actionDone"
-                app:hint="Informe a data de nascimento"
-                android:textColor="@android:color/black"
-                />
+                </Button>
 
 
-          <Button
-              android:id="@+id/btCadastra"
-              android:layout_width="wrap_content"
-              android:layout_height="50dp"
-              android:layout_margin="20dp"
-              android:text="Cadastrar"
-              android:backgroundTint="@color/red"
-              android:layout_gravity="center">
 
-          </Button>
+            </LinearLayout>
 
-    </LinearLayout>
+
+
+
+        </LinearLayout>
     </ScrollView>
 
 </FrameLayout>

@@ -1,7 +1,5 @@
 package com.leo.projeto.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leo.projeto.bean.DbUsuariosBean;
 import com.leo.projeto.entities.DbUsuarios;
 import com.leo.projeto.request.LoginUsuarioRequest;
 import com.leo.projeto.request.UsuarioRequest;
 import com.leo.projeto.response.LoginUsuarioResponse;
+import com.leo.projeto.response.LstUsuarioResponse;
 import com.leo.projeto.response.UsuarioResponse;
 
 @RestController
@@ -34,7 +34,7 @@ public class UsuarioController {
     	String msgErro = bean.insereUsuario(usuario);
     	
     	if(msgErro == null) {
-    		response.setToken("Usuario inserido com sucesso!");
+    		response.setToken("Usuário inserido com sucesso!");
     	}else {
     		response.setErro(msgErro);
     	}
@@ -56,9 +56,9 @@ public class UsuarioController {
     	DbUsuarios usuario = bean.findUsuarioByNomeSenha(req.getNome(), req.getSenha());
     	
     	if(usuario != null) {
-    		response.setToken("Usuario logado com sucesso!");
+    		response.setToken("Usuário logado com sucesso!");
     	}else {
-    		response.setErro("Usuario/Senha invalido!");
+    		response.setErro("Usuário/Senha inválido!");
     	}
     	return response;
     	
@@ -70,7 +70,7 @@ public class UsuarioController {
 			 throws Exception {
     	
     	if(idUsuario == null) {
-    		return "Usuario deve ser informado!";
+    		return "Usuário deve ser informado!";
     	}
     	
     	try {
@@ -78,7 +78,7 @@ public class UsuarioController {
     		DbUsuarios usuario = new DbUsuarios();
     		usuario.setId(idUsuario);
     		bean.removeUsuario(usuario);
-    		return "Usuario removido com sucesso!";
+    		return "Usuário removido com sucesso!";
 			
 		} catch (Exception e) {
 			return e.getMessage();
@@ -87,12 +87,20 @@ public class UsuarioController {
     }
     
     @GetMapping("/lstUsuarios")
-    List<DbUsuarios> allList() {
-      return bean.findAllUsuarios();
+    public LstUsuarioResponse allList() {
+    	LstUsuarioResponse response = new LstUsuarioResponse();
+    	
+    	response.setUsuarios(bean.findAllUsuarios());
+    	
+    	if(response.getUsuarios().isEmpty()) {
+    		response.setErro("Nenhum usuário encontrado");
+    	}
+    	
+      return response;
     }
     
     @GetMapping("/countUsuarios")
-    Integer allCount() {
+    public Integer allCount() {
       return bean.findAllUsuarios().size();
     }
     

@@ -10,7 +10,7 @@
     </style>
 
     <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#AAAAAA</item>
+        <item name="android:textColor">#EDE8E8</item>
         <item name="android:textSize">12sp</item>
     </style>
 

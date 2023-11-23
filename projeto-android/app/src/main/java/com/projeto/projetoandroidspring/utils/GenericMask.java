@@ -2,7 +2,8 @@ package com.projeto.projetoandroidspring.utils;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.projeto.projetoandroidspring.view.CustomEditText;
+import android.widget.EditText;
+
 public abstract class GenericMask {
 
     public static String mask;
@@ -42,11 +43,11 @@ public abstract class GenericMask {
         return finalString.toString();
     }
 
-    public static TextWatcher insert(final CustomEditText editText, final String mask) {
+    public static TextWatcher insert(final EditText editText, final String mask) {
         return insert(editText, mask, null);
     }
 
-    public static TextWatcher insert(final CustomEditText editText, String defaultMask, Func1<Integer, String> customMask) {
+    public static TextWatcher insert(final EditText editText, String defaultMask, Func1<Integer, String> customMask) {
         return new TextWatcher() {
             boolean isUpdating;
             String old = "";

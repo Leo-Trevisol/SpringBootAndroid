@@ -52,7 +52,7 @@
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
-                    android:hint="Usuario"
+                    android:hint="Usuário"
                     android:maxLines="1"
                     android:layout_gravity="center">
 
