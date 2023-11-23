@@ -16,6 +16,8 @@ import com.leo.projeto.dao.interfaces.DbUsuariosInterface;
 import com.leo.projeto.entities.DbUsuarios;
 import com.leo.projeto.vo.LoginVO;
 
+import utils.Utils;
+
 
 
 @Component
@@ -29,8 +31,8 @@ public class DbUsuariosBean {
 	
 	public String insereUsuario(DbUsuarios usuario) throws Exception {
 		
-		if(usuario.getNome() == null || usuario.getSenha() == null
-    			|| usuario.getEmail() == null || usuario.getNascimento() == null ) {
+		if(Utils.isEmpty(usuario.getNome()) || Utils.isEmpty(usuario.getSenha())
+    			|| Utils.isEmpty(usuario.getEmail()) || usuario.getNascimento() == null ) {
     		return "Todos os campos devem ser preenchidos";
     	}
 		

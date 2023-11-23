@@ -17,6 +17,8 @@ import com.leo.projeto.response.LoginUsuarioResponse;
 import com.leo.projeto.response.LstUsuarioResponse;
 import com.leo.projeto.response.UsuarioResponse;
 
+import utils.Utils;
+
 @RestController
 public class UsuarioController {
 	
@@ -48,7 +50,7 @@ public class UsuarioController {
     	
     	LoginUsuarioResponse response = new LoginUsuarioResponse();
     	
-    	if(req.getNome() == null || req.getSenha() == null) {
+    	if(Utils.isEmpty(req.getNome()) || Utils.isEmpty(req.getSenha())) {
     		response.setErro("Todos os campos devem ser informados!");
     		return response;
     	}
@@ -92,7 +94,7 @@ public class UsuarioController {
     	
     	response.setUsuarios(bean.findAllUsuarios());
     	
-    	if(response.getUsuarios().isEmpty()) {
+    	if(Utils.isEmpty(response.getUsuarios())) {
     		response.setErro("Nenhum usuário encontrado");
     	}
     	

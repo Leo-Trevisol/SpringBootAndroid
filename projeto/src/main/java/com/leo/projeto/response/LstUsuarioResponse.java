@@ -3,9 +3,6 @@ package com.leo.projeto.response;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.leo.projeto.entities.DbUsuarios;
 
 public class LstUsuarioResponse implements Serializable {
