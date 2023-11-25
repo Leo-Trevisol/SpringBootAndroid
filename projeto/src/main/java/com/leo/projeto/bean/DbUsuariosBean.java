@@ -1,8 +1,5 @@
 package com.leo.projeto.bean;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.leo.projeto.dao.DbUsuariosDAO;
 import com.leo.projeto.dao.interfaces.DbUsuariosInterface;
 import com.leo.projeto.entities.DbUsuarios;
-import com.leo.projeto.vo.LoginVO;
 
 import utils.Utils;
 
@@ -103,24 +99,4 @@ public class DbUsuariosBean {
 		}
 	}
 	
-	public DbUsuarios loginVoToDbUsuarios(LoginVO login) {
-		
-		DbUsuarios usuario = new DbUsuarios();
-		
-		usuario.setNome(login.getNome() != null ? login.getNome() : "");
-		usuario.setSenha(login.getSenha() != null ? login.getSenha() : "");
-		usuario.setEmail(login.getEmail() != null ? login.getEmail() : "");
-        String padrao = "dd/MM/yyyy";
-
-        DateFormat formatoData = new SimpleDateFormat(padrao);
-		try {
-			usuario.setNascimento(formatoData.parse(login.getNascimento()) != null ? formatoData.parse(login.getNascimento()) : null);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return usuario;
-
-	}
-
 }

@@ -2,7 +2,7 @@ package com.leo.projeto.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leo.projeto.entities.pk.DbUsuariosPK;
 
 import jakarta.persistence.Column;

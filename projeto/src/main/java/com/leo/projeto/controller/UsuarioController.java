@@ -31,9 +31,11 @@ public class UsuarioController {
     	
     	UsuarioResponse response = new UsuarioResponse();
     	
-    	DbUsuarios usuario = bean.loginVoToDbUsuarios(req.getUsuario());
+    	//DbUsuarios usuario = bean.loginVoToDbUsuarios(req.getUsuario());
     	
-    	String msgErro = bean.insereUsuario(usuario);
+    	//String msgErro = bean.insereUsuario(usuario);
+    	
+    	String msgErro = "";
     	
     	if(msgErro == null) {
     		response.setToken("Usuário inserido com sucesso!");

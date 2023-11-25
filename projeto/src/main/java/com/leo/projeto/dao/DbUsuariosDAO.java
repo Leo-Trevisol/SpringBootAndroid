@@ -3,10 +3,11 @@ package com.leo.projeto.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.leo.projeto.entities.DbUsuarios;
 
-import jakarta.persistence.EntityManager;
-
+@Repository
 public class DbUsuariosDAO {
 	
 	public DbUsuarios insereUsuario(DbUsuarios usuario) {

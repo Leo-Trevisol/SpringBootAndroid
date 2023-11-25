@@ -3,8 +3,7 @@ package com.leo.projeto.request;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.leo.projeto.entities.DbUsuarios;
-import com.leo.projeto.vo.LoginVO;
+import com.leo.projeto.vo.UsuarioVo;
 
 public class UsuarioRequest implements Serializable{
 	
@@ -13,9 +12,9 @@ public class UsuarioRequest implements Serializable{
 	 */
 	private static final long serialVersionUID = -8024717942904931202L;
 	
-	public LoginVO usuario;
+	public UsuarioVo usuario;
 
-	public UsuarioRequest(LoginVO usuario) {
+	public UsuarioRequest(UsuarioVo usuario) {
 		super();
 		this.usuario = usuario;
 	}
@@ -24,11 +23,11 @@ public class UsuarioRequest implements Serializable{
 		super();
 	}
 
-	public LoginVO getUsuario() {
+	public UsuarioVo getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(LoginVO usuario) {
+	public void setUsuario(UsuarioVo usuario) {
 		this.usuario = usuario;
 	}
 
