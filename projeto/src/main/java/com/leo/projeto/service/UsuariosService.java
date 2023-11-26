@@ -10,12 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leo.projeto.dao.DbUsuariosDAO;
 import com.leo.projeto.entities.DbUsuarios;
 import com.leo.projeto.repository.UsuariosRepository;
+import com.leo.projeto.response.ResponseHandler;
 import com.leo.projeto.vo.UsuarioVo;
 
 @Service
@@ -109,8 +111,16 @@ public class UsuariosService implements Serializable {
 		
 	}
 	
-//	public Optional<DbUsuarios> findById(Integer id) {
-//		 return usuariosRepository.findById(id);
-//	
-//	}
+	public UsuarioVo findById(Integer id) {
+		
+		Optional<DbUsuarios> usuario = usuariosRepository.findById(id);
+		
+		if(usuario.isPresent()) {
+			UsuarioVo usu = entityToVO(usuario.get());
+			return usu;
+		}
+		
+		 return null;
+	
+	}
 }

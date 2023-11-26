@@ -1,5 +1,7 @@
 package com.leo.projeto.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +14,10 @@ import com.leo.projeto.entities.pk.DbUsuariosPK;
 public interface UsuariosRepository extends JpaRepository<DbUsuarios, DbUsuariosPK> {
 
 	Page<DbUsuarios> findByNomeContainingIgnoreCase(final String search, Pageable pageable);
+	
+	Optional<DbUsuarios> findById(Integer id);
+
+	
+	
 
 }

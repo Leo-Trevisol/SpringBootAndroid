@@ -136,5 +136,21 @@ public class UsuariosResource implements Serializable {
 	    	return response;
 	    	
 	    }
+	    
+	    @GetMapping("/findById/{idUsuario}")
+	    public ResponseEntity<GenericResponse<UsuarioVo>> findById(@PathVariable("idUsuario") Integer id) {
+	    	
+	    	try {
 
+				UsuarioVo usuario = usuariosService.findById(id);
+				
+				if(usuario == null) {
+					return ResponseEntity.ok(new GenericResponse<>("Usuário não encontrado"));
+				}else {
+					return ResponseEntity.ok(new GenericResponse<>(usuario, 1));
+				}
+			} catch (Exception ex) {
+				return ResponseEntity.ok(new GenericResponse<>(ex.getMessage()));
+			}
+	    }
 }
