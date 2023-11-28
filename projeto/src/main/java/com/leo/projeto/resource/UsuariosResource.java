@@ -73,8 +73,8 @@ public class UsuariosResource implements Serializable {
 	    		
 	    		DbUsuarios usuario = new DbUsuarios();
 	    		usuario.setId(idUsuario);
-	    		usuariosService.remove(usuario);
-	    		return "Usuário removido com sucesso!";
+	    		String msg = usuariosService.remove(usuario);
+	    		return msg;
 				
 			} catch (Exception e) {
 				return e.getMessage();
