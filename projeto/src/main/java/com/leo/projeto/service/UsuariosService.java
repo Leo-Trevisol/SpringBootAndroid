@@ -95,8 +95,23 @@ public class UsuariosService implements Serializable {
 		return usuariosRepository.count();
 	}
 	
-	public void remove(DbUsuarios entity) {
-		usuariosRepository.delete(entity);
+	public String remove(DbUsuarios entity) {
+		
+		try {
+		
+		UsuarioVo usuario = findById(entity.getId());
+		
+		if(usuario == null) {
+			return "Usuário não encontrado";
+		}else {
+			usuariosRepository.delete(entity);
+			return "Usuário deletado com sucesso";
+		}
+		
+		}catch(Exception e) {
+			return "Erro ao deletar usuário " + e.getMessage();
+		}
+		
 	}
 	
 	public DbUsuarios findUsuarioByNomeSenha(String nome, String senha) {
@@ -121,6 +136,6 @@ public class UsuariosService implements Serializable {
 		}
 		
 		 return null;
-	
+		
 	}
 }
