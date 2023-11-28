@@ -12,8 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.projeto.projetoandroidspring.classesfonte.request.LoginUsuarioRequest;
@@ -21,6 +24,7 @@ import com.projeto.projetoandroidspring.classesfonte.request.UsuarioRequest;
 import com.projeto.projetoandroidspring.classesfonte.response.LoginUsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.response.UsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
+import com.projeto.projetoandroidspring.fragments.ModulosFragment;
 import com.projeto.projetoandroidspring.utils.CustomAsyncTask;
 import com.projeto.projetoandroidspring.utils.DateUtils;
 import com.projeto.projetoandroidspring.utils.GenericMask;
@@ -41,10 +45,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private Calendar calendar;
 
+    private static final String ENTRADA_FRAGMENT_TAG = "EntradaFragmentKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         calendar = Calendar.getInstance();
 
@@ -56,10 +65,11 @@ public class LoginActivity extends AppCompatActivity {
 
         btLogar.setOnClickListener(v -> {
             if(Utils.isEmpty(editTextUsuario.getText().toString().trim()) ||
-                    Utils.isEmpty(editTextSenha.getText().toString().trim()))
+                    Utils.isEmpty(editTextSenha.getText().toString().trim())) {
                 Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
-            else
-            validarUsuarioSenha(editTextUsuario.getText().toString(), editTextSenha.getText().toString());
+            } else {
+                validarUsuarioSenha(editTextUsuario.getText().toString(), editTextSenha.getText().toString());
+            }
         });
 
         btAddUser = findViewById(R.id.btAdduser);
@@ -102,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
                 } else if (!senha.getText().toString().trim().equals(senhaConfirm.getText().toString().trim())) {
                     Toast.makeText(this, "As senhas devem ser iguais", Toast.LENGTH_SHORT).show();
-                } else if (!Utils.isValidEmail(email.getText().toString())) {
+                } else if (!Utils.isValidEmail(email.getText().toString().trim())) {
                     Toast.makeText(this, "Email inválido", Toast.LENGTH_SHORT).show();
                 }else if(!DateUtils.isValidDate(nascimento.getText().toString().trim())){
                     Toast.makeText(this, "Data inválida", Toast.LENGTH_SHORT).show();
@@ -133,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String json = gson.toJson(req);
 
-        CustomAsyncTask task = new CustomAsyncTask(this, json, 2000, "Aguarde...") {
+        CustomAsyncTask task = new CustomAsyncTask(this, json, 10000, "Aguarde...") {
             @Override
             public void customOnPostExecute() {
 
@@ -144,8 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, response.getErro(), Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(LoginActivity.this, response.getToken(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
+                        showModulos();
                     }
 
                 } else {
@@ -154,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        task.execute("http://192.168.3.104:8080/loginUsuario");
+        task.execute("http://192.168.3.104:8081/api/v1/usuarios/loginUsuario");
 
 
     }
@@ -189,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        task.execute("http://192.168.3.104:8080/inserirUsuario");
+        task.execute("http://192.168.3.104:8081/api/v1/usuarios/inserirUsuario");
 
 
     }
@@ -223,5 +232,12 @@ public class LoginActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         nascimento.setText(dateFormat.format(calendar.getTime()));
     }
+
+    private void showModulos(){
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
+    }
+
+
 }
 

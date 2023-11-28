@@ -16,6 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
@@ -40,6 +42,7 @@
                     android:id="@+id/txtInfoUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextTheme"
                     android:layout_weight="1"
                     android:hint="Informe o usuário"
                     >
@@ -70,7 +73,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Senha">
+                    android:text="Senha:">
 
                 </TextView>
 
@@ -84,6 +87,7 @@
                     android:id="@+id/txtInfoSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextTheme"
                     android:layout_weight="1"
                     android:hint="Informe a senha"
                     android:inputType="textPassword"
@@ -113,7 +117,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Confirmação da senha">
+                    android:text="Confirmação da senha:">
 
                 </TextView>
 
@@ -127,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Confirme a senha"
+                    android:theme="@style/MyEditTextTheme"
                     android:layout_weight="1"
                     android:inputType="textPassword"
                     >
@@ -156,7 +161,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="E-mail">
+                    android:text="E-mail:">
 
                 </TextView>
 
@@ -169,6 +174,7 @@
                     android:id="@+id/txtInfoEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:theme="@style/MyEditTextTheme"
                     android:layout_weight="1"
                     android:hint="Informe o E-mail"
                     >
@@ -197,7 +203,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data de nascimento">
+                    android:text="Data de nascimento:">
 
                 </TextView>
 
@@ -212,6 +218,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Informe a data de nasc"
+                    android:theme="@style/MyEditTextTheme"
+                    android:inputType="date"
                     android:layout_weight="1"
                     android:drawableTint="@color/colorPrimary"
                     >

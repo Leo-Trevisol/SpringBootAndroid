@@ -10,4 +10,8 @@
     <color name="red">#E44D4D</color>
     <color name="colorPrimary">#1C1C1C</color>
     <color name="colorA">#aaa</color>
+    <color name="colorC">#ccc</color>
+    <color name="color8">#888</color>
+    <color name="color3">#333</color>
+    <color name="defaultBackground">#f4f4f4</color>
 </resources>

@@ -2,14 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".LoginActivity">
+
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,9 +28,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/leonardo"
                 android:layout_weight="1"
-                >
+                android:src="@drawable/leonardo">
 
             </ImageView>
 
@@ -35,15 +38,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
-            >
+
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center"
+                android:orientation="horizontal"
 
                 >
 
@@ -51,10 +54,13 @@
                     android:id="@+id/textusuario"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:hint="Usuário"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:maxLines="1"
-                    android:layout_gravity="center">
+                    android:theme="@style/MyEditTextTheme">
 
                 </EditText>
 
@@ -62,10 +68,10 @@
                     android:id="@+id/btAdduser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/newuser"
                     android:layout_gravity="center"
+
                     android:layout_margin="5dp"
-                    >
+                    android:src="@drawable/newuser">
 
 
                 </ImageView>
@@ -73,16 +79,18 @@
             </LinearLayout>
 
 
-
             <EditText
                 android:id="@+id/textsenha"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:hint="Senha"
                 android:maxLines="1"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="center">
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:theme="@style/MyEditTextTheme">
 
             </EditText>
 
@@ -90,26 +98,27 @@
                 android:id="@+id/btentrar"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/red"
                 android:drawableRight="@drawable/entrar"
-                android:text="ENTRAR">
-            </Button>
+                android:text="ENTRAR"></Button>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Powered by Leonardo"
-                android:gravity="center"
                 android:drawableRight="@drawable/iconl"
                 android:fontFamily="@font/comicsansbold"
-                android:layout_gravity="center">
+                android:gravity="center"
+                android:text="Powered by Leonardo"
+                android:textColor="@color/black">
 
             </TextView>
 
         </LinearLayout>
+
 
     </LinearLayout>
 
