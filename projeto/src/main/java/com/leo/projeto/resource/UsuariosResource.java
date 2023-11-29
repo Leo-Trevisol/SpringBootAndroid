@@ -22,6 +22,7 @@ import com.leo.projeto.request.LoginUsuarioRequest;
 import com.leo.projeto.request.UsuarioRequest;
 import com.leo.projeto.response.GenericResponse;
 import com.leo.projeto.response.LoginUsuarioResponse;
+import com.leo.projeto.response.LstUsuarioResponse;
 import com.leo.projeto.response.ResponseHandler;
 import com.leo.projeto.response.UsuarioResponse;
 import com.leo.projeto.service.UsuariosService;
@@ -101,14 +102,20 @@ public class UsuariosResource implements Serializable {
 	}
 
 	@GetMapping("/findAll")
-	public ResponseEntity<ResponseHandler<List<UsuarioVo>>> findAll() throws Exception {
+	public LstUsuarioResponse findAll() throws Exception {
+		
+		LstUsuarioResponse response = new LstUsuarioResponse();
 
-		List<UsuarioVo> lstUnidades = usuariosService.findAll();
+		List<UsuarioVo> lstUsuarios = usuariosService.findAll();
 
-		if (lstUnidades != null)
-			Collections.sort(lstUnidades, (o1, o2) -> o1.getNome().compareTo(o2.getNome()));
+		if (lstUsuarios != null) {
+			Collections.sort(lstUsuarios, (o1, o2) -> o1.getNome().compareTo(o2.getNome()));
+			response.setUsuarios(lstUsuarios);
+		}else {
+			response.setErro("Nenhum usuário encontrado");
+		}
 
-		return ResponseEntity.ok(new ResponseHandler<>(lstUnidades));
+		return response;
 	}
 	
 	   @GetMapping("/count")

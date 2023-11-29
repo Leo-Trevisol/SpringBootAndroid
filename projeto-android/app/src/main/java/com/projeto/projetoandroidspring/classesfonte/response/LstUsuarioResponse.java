@@ -1,10 +1,9 @@
-package com.leo.projeto.response;
+package com.projeto.projetoandroidspring.classesfonte.response;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.leo.projeto.entities.DbUsuarios;
-import com.leo.projeto.vo.UsuarioVo;
+import com.projeto.projetoandroidspring.classesfonte.vo.UsuarioVo;
 
 public class LstUsuarioResponse implements Serializable {
 	

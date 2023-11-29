@@ -15,8 +15,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.projeto.projetoandroidspring.classesfonte.request.LoginUsuarioRequest;
@@ -24,7 +22,6 @@ import com.projeto.projetoandroidspring.classesfonte.request.UsuarioRequest;
 import com.projeto.projetoandroidspring.classesfonte.response.LoginUsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.response.UsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.vo.LoginVO;
-import com.projeto.projetoandroidspring.fragments.ModulosFragment;
 import com.projeto.projetoandroidspring.utils.CustomAsyncTask;
 import com.projeto.projetoandroidspring.utils.DateUtils;
 import com.projeto.projetoandroidspring.utils.GenericMask;
@@ -69,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
             } else {
                 validarUsuarioSenha(editTextUsuario.getText().toString(), editTextSenha.getText().toString());
+              //  showModulos();
             }
         });
 
@@ -163,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        task.execute("http://192.168.3.104:8081/api/v1/usuarios/loginUsuario");
+        task.execute("http://192.168.3.104:8080/api/v1/usuarios/loginUsuario");
 
 
     }
@@ -234,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showModulos(){
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ModulosActivity.class);
         startActivity(intent);
     }
 

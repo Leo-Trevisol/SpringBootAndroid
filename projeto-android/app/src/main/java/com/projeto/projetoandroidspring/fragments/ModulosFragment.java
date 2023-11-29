@@ -1,6 +1,5 @@
 package com.projeto.projetoandroidspring.fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
@@ -11,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.projeto.projetoandroidspring.MainActivity;
+import com.projeto.projetoandroidspring.ModulosActivity;
+import com.projeto.projetoandroidspring.ModulosAdminActivity;
 import com.projeto.projetoandroidspring.R;
 import com.projeto.projetoandroidspring.utils.Modulo;
 import com.projeto.projetoandroidspring.utils.ModulosAdapter;
@@ -48,7 +48,7 @@ public class ModulosFragment extends Fragment {
     }
 
     public void openActivity(){
-        Intent i = new Intent(getActivity(), MainActivity.class);
+        Intent i = new Intent(getActivity(), ModulosAdminActivity.class);
         startActivity(i);
     }
 
