@@ -65,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                     Utils.isEmpty(editTextSenha.getText().toString().trim())) {
                 Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
             } else {
-                validarUsuarioSenha(editTextUsuario.getText().toString(), editTextSenha.getText().toString());
-              //  showModulos();
+                //validarUsuarioSenha(editTextUsuario.getText().toString(), editTextSenha.getText().toString());
+                showModulos();
             }
         });
 

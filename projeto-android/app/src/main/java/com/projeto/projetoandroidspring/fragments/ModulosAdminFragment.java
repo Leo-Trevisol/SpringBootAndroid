@@ -11,11 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.projeto.projetoandroidspring.LoginActivity;
 import com.projeto.projetoandroidspring.ModulosAdminActivity;
 import com.projeto.projetoandroidspring.R;
+import com.projeto.projetoandroidspring.UsuarioListFragment;
 import com.projeto.projetoandroidspring.classesfonte.request.UsuarioRequest;
 import com.projeto.projetoandroidspring.classesfonte.response.LstUsuarioResponse;
 import com.projeto.projetoandroidspring.classesfonte.response.UsuarioResponse;
@@ -50,7 +52,7 @@ public class ModulosAdminFragment extends Fragment {
         final GridView gridView = view.findViewById(R.id.gridView_modulos);
         List<Modulo> lstModulos = new ArrayList<Modulo>();
 
-        lstModulos.add( new Modulo(R.drawable.buscauser, "CONSULTAR USUÁRIOS", v -> consultarUsuarios()));
+        lstModulos.add( new Modulo(R.drawable.buscauser, "CONSULTAR USUÁRIOS", v -> showConsultarUsuarios()));
         lstModulos.add( new Modulo(R.drawable.newuser, "INSERIR USUÁRIO", v -> openActivity()));
 
         gridView.setAdapter(new ModulosAdapter(lstModulos, getActivity()));
@@ -59,6 +61,13 @@ public class ModulosAdminFragment extends Fragment {
     public void openActivity(){
         Intent i = new Intent(getActivity(), ModulosAdminActivity.class);
         startActivity(i);
+    }
+
+    private void showConsultarUsuarios(){
+
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame, new UsuarioListFragment());
+            fragmentTransaction.commit();
     }
 
     private void consultarUsuarios() {
